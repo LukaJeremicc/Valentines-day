@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Valentine 💘</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="card" id="card">
+    <div class="top">
+      <div class="imgbox tilt" aria-label="Photo left">
+        <img src="img1.jpg" alt="Us - photo 1" onerror="this.style.display='none'; this.parentElement.classList.add('placeholder')" />
+        <video class="imgvideo" src="videos/klinac.mp4" loop></video>
+        <span class="hover-hint">Hover over me 👆</span>
+      </div>
+
+      <div class="center">
+        <div class="emoji-wrapper">
+          <div class="pointer"></div>
+          <p class="tiny">💌</p>
+          <div class="bubble" id="bubble">
+            <video class="bubble-video" src="videos/impecable.mp4" loop></video>
+          </div>
+        </div>
+        <h1>Will you be my valentine?</h1>
+
+        <div class="actions">
+          <button class="btn yes" id="yesBtn">YES</button>
+        </div>
+
+      </div>
+
+      <div class="imgbox tilt2" aria-label="Photo right">
+        <img src="img/IMG1.jpg" alt="IMG1" onerror="this.style.display='none'; this.parentElement.classList.add('placeholder')" />
+      </div>
+    </div>
+    <section class="result" id="result" hidden>
+      <h2>YAAAY 💖</h2>
+      <p>You just made my day. Happy Valentine's!</p>
+      <div class="mini">
+        <span>🍫</span><span>🌹</span><span>🫶</span><span>💘</span>
+      </div>
+      <button class="btn ghost" id="resetBtn">Replay</button>
+    </section>
+  </main>
+
+  <section class="secondbar" id="secondbar" hidden>
+    <div class="secondbar-content">
+      <img src="img/SpecialOne.jpg" alt="Special" />
+    </div>
+    <button class="btn-close" id="backBtn" aria-label="Go back">← Back</button>
+  </section>
+  </section>
+
+  <audio id="bgMusic" src="audio/JustTheTwoOfUs.mp3" loop></audio>
+
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const backBtn = document.getElementById('backBtn');
+    const card = document.getElementById('card');
+    const secondbar = document.getElementById('secondbar');
+    const body = document.body;
+    const emojiWrapper = document.querySelector('.emoji-wrapper');
+    const bubbleVideo = document.querySelector('.bubble-video');
+    const leftImgBox = document.querySelector('.imgbox.tilt');
+    const leftVideo = leftImgBox.querySelector('.imgvideo');
+    const bgMusic = document.getElementById('bgMusic');
+
+    yesBtn.addEventListener('click', function() {
+      card.classList.add('moved-up');
+      secondbar.removeAttribute('hidden');
+      body.classList.add('popup-open');
+      bgMusic.play();
+    });
+
+    backBtn.addEventListener('click', function() {
+      card.classList.remove('moved-up');
+      secondbar.setAttribute('hidden', '');
+      body.classList.remove('popup-open');
+      bgMusic.pause();
+      bgMusic.currentTime = 0;
+    });
+
+    emojiWrapper.addEventListener('mouseenter', function() {
+      bubbleVideo.play();
+    });
+
+    emojiWrapper.addEventListener('mouseleave', function() {
+      bubbleVideo.pause();
+      bubbleVideo.currentTime = 0;
+    });
+
+    leftImgBox.addEventListener('mouseenter', function() {
+      leftVideo.play();
+    });
+
+    leftImgBox.addEventListener('mouseleave', function() {
+      leftVideo.pause();
+      leftVideo.currentTime = 0;
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
